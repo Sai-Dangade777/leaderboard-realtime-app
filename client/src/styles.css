@@ -1,0 +1,175 @@
+:root{--bg:#0f172a;--card:#111827;--accent:#ffba08;--text:#e5e7eb;--muted:#9ca3af}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#0b1020,#111827);color:var(--text);font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif}
+.container{max-width:980px;margin:24px auto;padding:0 16px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.card{background:rgba(17,24,39,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.select, .input, .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b1020;color:var(--text)}
+.btn{cursor:pointer;background:linear-gradient(135deg,#22d3ee,#3b82f6);border:none;color:#07111b;font-weight:600}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;justify-content:space-between;padding:10px;border-bottom:1px dashed rgba(255,255,255,.08)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:rgba(34,211,238,.12);color:#7dd3fc;font-size:12px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.grid{grid-template-columns:1.3fr .7fr}}
+
+/* wealth theme elements */
+.theme-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.theme-header {
+  position: relative;
+  padding: 14px;
+  color: #1a160a;
+  z-index: 1;
+}
+
+.theme-content {
+  position: relative;
+  background: #fff;
+  border-radius: 14px;
+  margin: 0 8px;
+  padding: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 1;
+}
+
+/* ranking navigation */
+.rank-nav {
+  display: flex;
+  gap: 10px;
+  padding: 0 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.rank-nav::-webkit-scrollbar {
+  display: none;
+}
+.rank-nav .tab {
+  padding: 10px 0;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.rank-nav .tab.active {
+  color: var(--text);
+}
+.rank-nav .tab.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* podium layouts */
+.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 16px}
+.podium-card{position:relative;border-radius:14px;padding:14px;text-align:center;border:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
+.podium-card .rank-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;color:#000;border-radius:999px;padding:4px 10px;font-weight:800;font-size:12px}
+.rank-1{box-shadow:0 0 0 2px rgba(245,158,11,.35) inset}
+.rank-2{box-shadow:0 0 0 2px rgba(156,163,175,.35) inset}
+.rank-3{box-shadow:0 0 0 2px rgba(217,119,6,.35) inset}
+.muted-num{font-variant-numeric:tabular-nums;letter-spacing:.5px}
+
+/* tabs */
+.tabs{display:flex;gap:8px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px}
+.tab{padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--muted);user-select:none}
+.tab.active{background:rgba(255,255,255,.12);color:var(--text);font-weight:600}
+
+/* wealth header */
+.wealth-header{position:relative;border-radius:16px;padding:14px;background:linear-gradient(180deg,#f8d481,#f7b552);color:#1a160a;border:1px solid rgba(0,0,0,.06)}
+.wealth-header .topline{display:flex;align-items:center;gap:10px}
+.wealth-tabs{display:flex;gap:16px;color:#3b2b05;font-weight:600}
+.wealth-tabs .active{color:#000;border-bottom:2px solid #000}
+.segmented{margin-top:10px;background:rgba(255,255,255,.6);border-radius:999px;display:inline-flex;padding:4px}
+.segmented button{background:transparent;border:none;padding:6px 12px;border-radius:999px;cursor:pointer;color:#3b2b05;font-weight:600}
+.segmented .active{background:#fff;color:#000;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.rewards{position:absolute;right:12px;top:12px;background:#ff6b6b;color:#fff;border:none;border-radius:12px;padding:6px 10px;font-weight:700;cursor:pointer}
+.hero{display:flex;justify-content:center;align-items:center;margin-top:10px}
+.hero-img {
+  width: 160px;
+  height: 80px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.settlement{margin-top:6px;text-align:center;color:#3b2b05;font-weight:600}
+
+/* podium wealth (center taller) */
+.podium-wealth{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:12px;margin:8px 0 16px}
+.podium-wealth .podium-card{padding-top:22px}
+.podium-wealth .podium-card.center{transform:translateY(-6px)}
+.podium-wealth .winner-medal {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* list rows like cards */
+.list .rank-row{display:flex;align-items:center;gap:10px}
+.list .right{display:flex;align-items:center;gap:6px}
+.trophy{font-size:16px;color:#ffaa00}
+
+/* leaderboard list layout */
+.leaderboard-list {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.leaderboard-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.leaderboard-list li:last-child {
+  border-bottom: none;
+}
+.leaderboard-list .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.leaderboard-list .rank {
+  width: 24px;
+  text-align: center;
+  font-weight: 700;
+  color: #666;
+}
+.leaderboard-list .points {
+  font-weight: 600;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
