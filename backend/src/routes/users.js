@@ -70,7 +70,7 @@ router.post('/:id/claim', async (req, res, next) => {
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-  const awarded = 5; // Always award 5 points
+  const awarded = Math.floor(Math.random() * 10) + 1; // Award random points between 1 and 10
 
     user.totalPoints += awarded;
     await user.save();

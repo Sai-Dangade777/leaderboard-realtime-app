@@ -85,9 +85,9 @@ export default function UserSelector({ onClaimed, refreshKey, leaderboardUsers }
       }));
       
       onClaimed?.({
-        user: selectedUser,
-        awarded: 5, // Ensure only 5 points are displayed
-        ...res
+  user: selectedUser,
+  awarded: res.awarded || 5, // Use actual awarded points from backend
+  ...res
       });
       
       // Reload the users list to get updated points
