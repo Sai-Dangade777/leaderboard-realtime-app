@@ -1,8 +1,32 @@
+
 import express from 'express';
 import User from '../models/User.js';
 import Claim from '../models/Claim.js';
 
 const router = express.Router();
+
+// Bulk create users from a list of names (for leaderboard sync)
+router.post('/bulk-create', async (req, res, next) => {
+  try {
+    const names = req.body?.names || [];
+    if (!Array.isArray(names) || names.length === 0) {
+      return res.status(400).json({ message: 'Names array required' });
+    }
+    // Remove duplicates and trim
+    const uniqueNames = [...new Set(names.map(n => n.trim()).filter(Boolean))];
+    const created = [];
+    for (const name of uniqueNames) {
+      let user = await User.findOne({ name });
+      if (!user) {
+        user = await User.create({ name });
+        created.push(user);
+      }
+    }
+    res.json({ created });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // List users (paginated basic list)
 router.get('/', async (req, res, next) => {
@@ -46,7 +70,7 @@ router.post('/:id/claim', async (req, res, next) => {
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    const awarded = Math.floor(Math.random() * 10) + 1; // 1..10
+  const awarded = 5; // Always award 5 points
 
     user.totalPoints += awarded;
     await user.save();
