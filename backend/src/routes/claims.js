@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     const skip = (page - 1) * limit;
 
     const filter = {};
-    if (req.query.userId) filter.user = req.query.userId;
+    if (req.query.userId) filter.user = { $eq: req.query.userId };
     const window = (req.query.window || '').toLowerCase();
     if (window) {
       const now = new Date();
